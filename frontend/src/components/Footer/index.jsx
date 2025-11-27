@@ -1,9 +1,12 @@
 import './style.css'
 
-export default function Footer() {
+function Footer() {
+
     return (
         <footer>
-            <p>&copy; 2025 - Todos os direitos reservados - Adrians Franco</p>
+            <p>&copy; 2025 - Todos os direitos reservados - Adrians franco</p>
         </footer>
     )
 }
+
+export default Footer

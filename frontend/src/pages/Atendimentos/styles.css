@@ -1,0 +1,57 @@
+
+main {
+  background-color: #1e1e1e;
+  color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+}
+
+form div {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input, select {
+  padding: 8px;
+  border: 1px solid #555;
+  border-radius: 4px;
+  background-color: #333;
+  color: #fff;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+button {
+  padding: 10px 15px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button[type="reset"] {
+  background-color: #555;
+  color: #fff;
+}
+
+button[type="submit"] {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+button:hover {
+  opacity: 0.9;
+}

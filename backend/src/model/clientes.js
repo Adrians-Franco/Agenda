@@ -1,8 +1,9 @@
 import database from "../config/database.js"
 
-class Atendimento {
+class Cliente {
+
     constructor() {
-        this.model = database.db.define('Atendimento', {
+        this.model = database.db.define('clientes', {
             id: {
                 type: database.db.Sequelize.INTEGER,
                 primaryKey: true,
@@ -16,16 +17,9 @@ class Atendimento {
             },
             senha: {
                 type: database.db.Sequelize.STRING
-            },
-            ativo: {
-                type: database.db.Sequelize.BOOLEAN
-            },
-            permissao: {
-                
-                type: database.db.Sequelize.INTEGER
             }
         })
     }
 }
 
-export default new Atendimento().model
+export default new Cliente().model

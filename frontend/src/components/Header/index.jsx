@@ -1,22 +1,22 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom"
 import './style.css'
 
-export default function Header() {
+function Header() {
+
+
     return (
         <header>
-            <h1>Cliente API</h1>
-            <nav>
-                <Link to='/'>
-                    <button>
-                        Inicio
-                    </button>
-                </Link>
-                <Link to='/cliente'>
-                    <button>
-                        API
-                    </button>
-                </Link>
-            </nav>
-        </header>
+            <h1>Prova de FUllStack</h1>
+
+            <Link to={'/'}>
+                <button>
+                    Voltar para Home
+                </button>
+            </Link>
+            
+
+        </header >
     )
 }
+
+export default Header

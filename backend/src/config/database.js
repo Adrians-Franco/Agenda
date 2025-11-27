@@ -1,12 +1,13 @@
-import { Sequelize } from 'sequelize'
+import { Sequelize } from "sequelize";
 
 class Database {
+
     constructor() {
-        this.init()
+        this.init();
     }
 
     init() {
-        
+        // .env - dotenv
         this.db = new Sequelize({
             database: 'agenda',
             host: 'localhost',
