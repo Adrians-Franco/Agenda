@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: "http://localhost:3000"
+    baseURL: "https://agenda-7q4f.onrender.com"
 })
 
 api.interceptors.request.use(
