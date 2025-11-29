@@ -4,7 +4,6 @@ import router from './router/router.js'
 import database from './config/database.js'
 
 
-
 const app = express()
 
 app.use(express.json())
@@ -15,7 +14,7 @@ app.use('/api', router)
 const porta = 3000
 
 database.db
-    .sync({ force: false})
+    .sync({ force: false })
     .then((_) => {
         app.listen(porta, () => {
             console.info("Servidor rodando na porta " + porta)

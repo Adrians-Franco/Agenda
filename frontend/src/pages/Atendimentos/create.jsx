@@ -24,7 +24,7 @@ export default function CreateAtendimento() {
         const response = await createAtendimento(atendimento)
 
         if (response.status === 201) {
-            navigate('/atendimentos')
+            navigate('/self/atendimentos')
         }
     }
 
@@ -34,11 +34,11 @@ export default function CreateAtendimento() {
             <form>
                 <div>
                     <label>Dia:</label>
-                    <input type="date" name="dia" id="dia" value={atendimento.dia} onChange={handleChange} />
+                    <input type="text" name="dia" id="dia" value={atendimento.dia} onChange={handleChange} />
                 </div>
                 <div>
                     <label>Hora:</label>
-                    <input type="time" name="hora" id="hora" value={atendimento.hora} onChange={handleChange} />
+                    <input type="text" name="hora" id="hora" value={atendimento.hora} onChange={handleChange} />
                 </div>
                 <div>
                     <label>valor:</label>
@@ -63,6 +63,7 @@ export default function CreateAtendimento() {
                     onClick={handleSave}
                 >Enviar</button>
             </form>
+
         </main>
     )
 

@@ -37,7 +37,7 @@ export default function UpdateAtendimento() {
         const response = await updateAtendimento(prevAtendimento.id, atendimento)
 
         if (response.status === 200) {
-            navigate('/atendimentos')
+            navigate('/self/atendimentos')
             console.log("atendimento alterado com sucesso")
         } else {
             console.log("Erro ao alterar o atendimento")
@@ -51,11 +51,11 @@ export default function UpdateAtendimento() {
             <form>
                 <div>
                     <label>Dia:</label>
-                    <input type="number" name="dia" id="dia" value={atendimento.dia} onChange={handleChange} />
+                    <input type="text" name="dia" id="dia" value={atendimento.dia} onChange={handleChange} />
                 </div>
                 <div>
                     <label>Hora:</label>
-                    <input type="time" name="hora" id="hora" value={atendimento.hora} onChange={handleChange} />
+                    <input type="text" name="hora" id="hora" value={atendimento.hora} onChange={handleChange} />
                 </div>
                 <div>
                     <label>valor:</label>

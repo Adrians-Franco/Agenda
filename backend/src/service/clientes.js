@@ -32,12 +32,12 @@ class ServiceCliente {
             throw new Error('Preencha todos os campos!')
         }
 
-        const senhaCriptografada = await bcrypt.hash(String(senha), SALT)
+        const senhaCrip = await bcrypt.hash(String(senha), SALT)
 
         await Cliente.create({
             nome,
             email,
-            senha: senhaCriptografada,
+            senha: senhaCrip,
         })
     }
 
@@ -45,18 +45,18 @@ class ServiceCliente {
         if (!id) {
             throw new Error('favor informar o ID')
         }
-        const cliente = await Cliente.findByPk(id)
-        if (!cliente) {
+        const oldCliente = await Cliente.findByPk(id)
+        if (!oldCliente) {
             throw new Error(`Cliente ${id} não encontrado!`)
         }
 
-        cliente.nome = nome || cliente.nome
-        cliente.email = email || cliente.email
-        cliente.senha = senha 
+        oldCliente.nome = nome || oldCliente.nome
+        oldCliente.email = email || oldCliente.email
+        oldCliente.senha = senha 
             ? await bcrypt.hash(String(senha), SALT) 
-            : cliente.senha 
+            : oldCliente.senha 
 
-        await cliente.save()
+        await oldCliente.save()
     }
 
     async Delete(id) {

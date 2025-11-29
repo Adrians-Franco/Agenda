@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react'
-import { deleteAtendimento, getAtendimentos } from '../../api/atendimentos'
+import { deleteAtendimento, getSelfAtendimentos } from '../../api/atendimentos'
 import { Link, useNavigate } from 'react-router-dom'
-import './styles.css'
-
-function Atendimentos() {
+function SelfAtendimentos() {
     const navigate = useNavigate()
     const [conteudo, setConteudo] = useState([])
+
 
     const handleUpdate = async (atendimento) => {
         navigate('/update/atendimento', { state: { atendimento } })
@@ -21,10 +20,9 @@ function Atendimentos() {
 
         setConteudo(atendimento => atendimento.filter(atendimento => atendimento.id != id))
     }
-
     useEffect(() => {
         async function Carregar() {
-            const todosAtendimentos = await getAtendimentos();
+            const todosAtendimentos = await getSelfAtendimentos();
             setConteudo(todosAtendimentos);
         }
         Carregar();
@@ -34,6 +32,9 @@ function Atendimentos() {
         <main>
             <Link to={'/create/atendimento'}>
                 <button>Criar</button>
+            </Link>
+            <Link to={'/atendimentos'}>
+                <button>Ver todos os Atendimentos</button>
             </Link>
             {
                 conteudo.length == 0
@@ -47,14 +48,21 @@ function Atendimentos() {
                             <h2>Hora: {atendimentos.hora}</h2>
                             <h2>Valor: {atendimentos.valor}</h2>
                             <h2>Concluido: {atendimentos.concluido ? 'Sim' : 'Nao'}</h2>
-                        </div>)
+                            <div className='actions'>
+                                <button
+                                    type='button'
+                                    onClick={() => handleUpdate(atendimentos)}
+                                >Alterar</button>
 
+                                <button
+                                    type='button'
+                                    onClick={() => handleDelete(atendimentos.id)}
+                                >Deletar</button>
+                            </div>
+                        </div>)
             }
-            <Link to={'/self/atendimentos'}>
-                <button>Voltar</button>
-            </Link>
         </main>
     )
 }
 
-export default Atendimentos
+export default SelfAtendimentos

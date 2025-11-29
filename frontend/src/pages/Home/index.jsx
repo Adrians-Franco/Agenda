@@ -5,18 +5,26 @@ import { useContext } from 'react'
 
 function Home() {
 
+    const { token } = useContext(AuthContext)
+
     return (
         <main>
-            <Link to='/user'>
-                <button>
-                    Atendimentos
-                </button>
-            </Link>
 
-              {
-                
-                   
-                     <Link to='/clientes'>
+            {
+                !token
+                    ? null
+                    : <Link to='/self/atendimentos'>
+                        <button>
+                            Atendimentos
+                        </button>
+                    </Link>
+            }
+
+
+            {
+                !token
+                    ? null
+                    : <Link to='/clientes'>
                         <button>
                             Clientes
                         </button>
@@ -28,7 +36,10 @@ function Home() {
                     Login
                 </button>
             </Link>
+
         </main>
+
+
 
 
     )

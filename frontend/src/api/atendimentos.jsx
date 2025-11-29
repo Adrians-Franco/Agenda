@@ -10,11 +10,36 @@ export const getAtendimentos = async () => {
     return response.data.atendimentos
 }
 
-export const createAtendimento = async (atendimento) => {
-    const response = await api.post('/api/atendimento', atendimento)
+export const getSelfAtendimentos = async () => {
+    const clienteId = localStorage.getItem("clienteId");
 
-    return response
+const response = await api.get('/api/atendimentosself/', {
+    headers: {
+        "cliente.id": clienteId
+    }
+});
+
+
+    if (response.status !== 200) {
+        return [] // throw new Error('')
+    }
+
+    return response.data.atendimentos
 }
+
+export const createAtendimento = async (atendimento) => {
+    const clienteId = localStorage.getItem("clienteId");
+
+    const response = await api.post('/api/atendimento', atendimento, {
+        headers: {
+            "cliente.id": clienteId
+        }
+    });
+
+    return response;
+}
+
+
 
 export const updateAtendimento = async (id, atendimento) => {
     const response = await api.put(`/api/atendimento/${id}`, atendimento)
@@ -25,5 +50,5 @@ export const updateAtendimento = async (id, atendimento) => {
 export const deleteAtendimento = async (id) => {
     const response = await api.delete(`/api/atendimento/${id}`)
 
-    return response.data.results
+    return response
 }

@@ -1,4 +1,4 @@
-import ServiceCliente from '../service/cliente.js'
+import ServiceCliente from '../service/clientes.js'
 
 class ControllerCliente {
 

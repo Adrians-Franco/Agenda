@@ -1,6 +1,18 @@
 import Atendimento from '../model/atendimentos.js'
+import Cliente from '../model/clientes.js'
+
 
 class ServiceAtendimento {
+
+    async FindAllByCliente(clienteId) {
+        const atendimentos = await Atendimento.findAll({
+            where: {
+                clienteId: clienteId
+            }
+        })
+
+        return atendimentos
+    }
 
     async FindAll() {
         const atendimento = await Atendimento.findAll()
@@ -22,20 +34,21 @@ class ServiceAtendimento {
         return atendimento
     }
 
-    async Create(dia, hora, valor) {
-        if (!dia || !hora || !valor) {
+    async Create(dia, hora, valor, concluido, clienteId) {
+        if (!dia || !hora || !valor || concluido == null) {
             throw new Error('Preencha todos os campos!')
         }
-
-        if (dia < 1 || dia > 31) {
-            throw new Error('Coloque um dia válido!')
+        const idCliente = await Cliente.findByPk(clienteId)
+        if (!idCliente) {
+            throw new Error('Cliente não encontrado')
         }
 
         await Atendimento.create({
             dia,
             hora,
             valor,
-            concluido: false
+            concluido,
+            clienteId
         })
     }
 
@@ -69,6 +82,7 @@ class ServiceAtendimento {
 
         await atendimento.destroy()
     }
+
 }
 
 export default new ServiceAtendimento()

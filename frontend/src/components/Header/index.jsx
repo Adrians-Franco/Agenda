@@ -6,7 +6,7 @@ function Header() {
 
     return (
         <header>
-            <h1>Prova de FUllStack</h1>
+            <h1>Prova de Backend e Frontend</h1>
 
             <Link to={'/'}>
                 <button>
